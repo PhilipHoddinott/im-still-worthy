@@ -16,5 +16,5 @@ b_cache = NN_forward(model,pixelRow);
 [confidence, classIdx] = max(b_cache.prob, [], 2);
 predictedDigit = classIdx - 1;
 
-title(sprintf('Predicted digit: %d (%.1f%%)', predictedDigit, 100 * confidence));
+title(sprintf('Predicted digit: %d (Confidence %.1f%%)', predictedDigit, 100 * confidence));
 end

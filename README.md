@@ -8,4 +8,4 @@ Goal here is to solve the mNist database with no AI code. I will be using codex 
 
 ![I'm still worthy](misc/stillWorthy.jpg)
 
-Update: I've managed to get above 98% with my 3 layer MATLAB. I've made a python copy for anyone who wants to use that (requires SciPy and a video of you saying "matrixes start at 1" to work)
+Update: I've managed to get above 98% with my 3 layer MATLAB. I've made a python copy for anyone who wants to use that (requires SciPy, matplotlib and a video of you saying "matrixes start at 1" to work)
