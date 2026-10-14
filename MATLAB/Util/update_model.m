@@ -1,6 +1,6 @@
-function model = update_model(model, gradiants, opts)
+function model = update_model(model, gradiants, lr)
 % leetttttts update this model
-    lr = opts.learnRate;
+    
 
     model.W1 = model.W1 - lr*gradiants.W1;
     model.b1 = model.b1 - lr*gradiants.b1;

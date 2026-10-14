@@ -7,7 +7,7 @@ rng(opts.seed)
 
 W1 = randn(inputSize, hiddenSize, 'single') * sqrt(2/inputSize);
 
-W2 = randn(hiddenSize, outputSize, 'single') * sqrt(2/outputSize);
+W2 = randn(hiddenSize, outputSize, 'single') * sqrt(2/hiddenSize);
 
 b1 = zeros(1,hiddenSize, 'single');
 b2 = zeros(1,outputSize, 'single');
