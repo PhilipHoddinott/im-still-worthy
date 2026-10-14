@@ -12,16 +12,16 @@ validFraction = 10/60; % for mNIST
 
 [fitIdx, validIdx] = make_strat_split(labels, validFraction, seed);
 
-xFit = pixel_values(fitIdx,:)/255;
+xFit = pixel_values(fitIdx,:); 
 yFit = labels(fitIdx);
 
-xValidation = pixel_values(validIdx,:)/255;
+xValidation = pixel_values(validIdx,:); 
 yValidation = labels(validIdx);
 
 
 %% get traning data 
 load(testFile, 'labels','pixel_values');
 
-xTest = pixel_values/255;
+xTest = pixel_values; 
 yTest = labels;
 end
