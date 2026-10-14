@@ -10,6 +10,7 @@ user_options.learnRate = [0.05, 0.02, 0.01]; % 0.05;
 user_options.batchSize = 128; % 
 user_options.numEpochs = 60;
 user_options.seed = 69; % 
+user_options.momentum = .9;
 
 %% load in data
 
@@ -18,7 +19,7 @@ user_options.seed = 69; %
 
 %% train the NN
 % get the model
-model = init_NN(user_options);
+[model, velocity] = init_NN(user_options);
 % misc vars
 numberOfFitRows = size(xFit,1);
 
@@ -55,11 +56,7 @@ for i_epoch = 1:user_options.numEpochs
         lr = lrr;
     end
 
-
-
-
-        
-
+    i_batch_out_count = 0;
     for iBatch = 1:user_options.batchSize:numberOfFitRows
         batchEnd = min(iBatch + user_options.batchSize -1, numberOfFitRows);
 
@@ -72,7 +69,16 @@ for i_epoch = 1:user_options.numEpochs
 
         gradiants = NN_backward(model, b_cache, yBatch);
         
-        model = update_model(model, gradiants, lr);
+        % model = update_model(model, gradiants, lr);
+        [model, velocity] = update_model(model, gradiants, lr, user_options.momentum, velocity);
+
+        if i_epoch == 1
+            if mod(i_batch_out_count, 10) == 0
+                [~, fitAcc] = getFit(model,xFit,yFit);
+                fprintf('Epoch %d / %d | batch: %d / %d | in batch Fit %.4f \n ',i_epoch, user_options.numEpochs, iBatch, numberOfFitRows,  fitAcc);
+            end
+            i_batch_out_count = i_batch_out_count+ 1;
+        end
     end
     
     % eval the fits

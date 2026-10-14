@@ -1,4 +1,4 @@
-function model = init_NN(opts)
+function [model, velocity] = init_NN(opts)
 % "I work with models" "oh you're a photographer" "something like that"
 inputSize = opts.inputSize;
 hiddenSize = opts.hiddenSize;
@@ -20,5 +20,10 @@ model.b2 = b2;
 model.inputSize = inputSize;
 model.hiddenSize = hiddenSize;
 model.outputSize = outputSize;
+
+velocity.W1 = zeros(size(W1));
+velocity.b1 = zeros(size(b1));
+velocity.W2 = zeros(size(W2));
+velocity.b2 = zeros(size(b2));
 
 end
