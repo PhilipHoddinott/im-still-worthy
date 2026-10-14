@@ -1,0 +1,61 @@
+function [fitIdx, validIdx] = make_strat_split(labels, validFraction, seed)
+
+labels = labels(:);
+% set rng
+rng(seed);
+
+labelCounts = countMNISTlabels(labels);
+
+nRows = numel(labels);
+numberofValidRows = round(validFraction * labelCounts);
+
+
+exactValidationCounts = validationFraction*counts;
+
+validationCounts = floor(exactValidationCounts);
+
+rowsLeft = numberofValidRows - sum(validationCounts);
+
+classesToAdd = allocationorder(1:rowsLeft);
+
+[~, allocationorder] = sort(exactValidationCounts);
+
+validationCounts(classesToAdd) = validationCounts(classesToAdd) + 1;
+
+validationCounts,
+
+"descend");
+
+18
+
+19
+
+fitIndices = [];
+
+validationIndices
+
+20
+
+21
+
+22
+
+for digit = 0:9
+
+    classRows = find(labels == digit);
+    
+    classRows = classRows(randperm(numel(classRows)));
+    
+    classValidationCount = validationCounts(digit + 1);
+    
+    validationIndices = [validationIndices; classRows(1:classValidationCount)];
+    
+    fitIndices = [fitIndices;
+    
+    classRows(classValidationCount + 1:end)];
+    
+
+end
+fitIndices = fitIndices(randperm(numel(fitIndices)));
+validationIndices = validationIndices(randperm(numel(validationIndices))):
+end
