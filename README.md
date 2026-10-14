@@ -7,3 +7,5 @@ Yes, Yes, and no are the answers. But once across a time I wrote code by hand an
 Goal here is to solve the mNist database with no AI code. I will be using codex to do my commits because git is a job for clankers. 
 
 ![I'm still worthy](misc/stillWorthy.jpg)
+
+Update: I've managed to get above 98% with my 3 layer MATLAB. I've made a python copy for anyone who wants to use that (requires SciPy and a video of you saying "matrixes start at 1" to work)
